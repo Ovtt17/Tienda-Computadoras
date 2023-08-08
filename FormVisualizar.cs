@@ -16,12 +16,17 @@ namespace Tienda
     public partial class FormVisualizar : Form
     {
         DataTable tabla;
+        private List<Computador> listaCopia = new List<Computador>();
 
         public FormVisualizar()
         {
             InitializeComponent();
         }
-
+        public FormVisualizar(List<Computador> lista)
+        {
+            InitializeComponent();
+            listaCopia = lista;
+        }
         private void FormVisualizar_Load(object sender, EventArgs e)
         {
             IniciarTabla();
@@ -38,7 +43,7 @@ namespace Tienda
         private void btnEliminarTodo_Click(object sender, EventArgs e)
         {
             //limpiamos la lista
-            FormPrincipal.lista.Clear();
+            listaCopia.Clear();
             VisualizarListaPrincipal();
             MessageBox.Show("Se han eliminado todos los registros.");
         }
@@ -80,7 +85,7 @@ namespace Tienda
             //limpiamos filas de la tabla
             tabla.Rows.Clear();
             //recorrer todos los datos guardados en la lista principal
-            foreach (Computador computador in FormPrincipal.lista)
+            foreach (Computador computador in listaCopia)
             {
                 CrearFila(computador);
             }
@@ -104,7 +109,7 @@ namespace Tienda
         {
             int fila = grilla.CurrentRow.Index;
             //elimina la fila de la lista
-            FormPrincipal.lista.RemoveAt(fila);
+            listaCopia.RemoveAt(fila);
             //visualizar datos de la lista
             VisualizarListaPrincipal();
             MessageBox.Show("Datos eliminados!!");
@@ -124,7 +129,7 @@ namespace Tienda
             //crear una lista para guardar los datos que se encuentren
             List<Computador> coincidencias = new List<Computador>();
 
-            foreach (Computador c in FormPrincipal.lista)
+            foreach (Computador c in listaCopia)
             {
                 string marcaGuardada = c.Marca;
                 // pasamos a minusculas para evitar problema a la hora de escribir en minus

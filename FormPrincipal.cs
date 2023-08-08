@@ -16,7 +16,7 @@ namespace Tienda
         private static FormPrincipal instancia;
 
         //creamos la lista de tipo Computador
-        public static List<Computador> lista = new List<Computador>();
+        private List<Computador> lista = new List<Computador>();
 
         public FormPrincipal()
         {
@@ -39,8 +39,8 @@ namespace Tienda
         //evento para ver datos guardados
         private void btnVerTabla_Click(object sender, EventArgs e)
         {
-            FormVisualizar formVisualizar = new FormVisualizar();
-            formVisualizar.Show();
+            FormVisualizar formVisualizar = new FormVisualizar(lista);
+            formVisualizar.ShowDialog();
         }
 
         //evento para limpiar los datos que se introdujeron en los combobox y textbox
