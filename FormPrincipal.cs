@@ -40,6 +40,7 @@ namespace Tienda
         private void btnVerTabla_Click(object sender, EventArgs e)
         {
             FormVisualizar formVisualizar = new FormVisualizar(lista);
+            this.Hide(); // ocultar el formulario principal
             formVisualizar.ShowDialog();
         }
 
@@ -64,14 +65,15 @@ namespace Tienda
             string memoriaExpandibleSeleccionada = cmbMemoriaExpandible.SelectedItem.ToString();
 
             
+
             //hacemos un try catch para comprobar de que se haya ingresado el precio de forma correcta
             try
             {
                 precioIngresado = double.Parse(txtPrecio.Text);
             }
-            catch (FormatException)
+            catch (FormatException err)
             {
-                MessageBox.Show("INGRESE EL PRECIO CORRECTAMENTE..");
+                MessageBox.Show($"ERROR: {err.Message}\n\nINGRESE EL PRECIO CORRECTAMENTE..");
                 return;
             }
             //Validaciones al guardar los datos.

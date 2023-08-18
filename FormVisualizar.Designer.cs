@@ -57,7 +57,7 @@
             this.btnEliminarFila.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminarFila.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnEliminarFila.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEliminarFila.Location = new System.Drawing.Point(548, 543);
+            this.btnEliminarFila.Location = new System.Drawing.Point(557, 543);
             this.btnEliminarFila.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEliminarFila.Name = "btnEliminarFila";
             this.btnEliminarFila.Size = new System.Drawing.Size(148, 52);
@@ -163,7 +163,9 @@
             this.Controls.Add(this.grilla);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormVisualizar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Datos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormVisualizar_FormClosing);
             this.Load += new System.EventHandler(this.FormVisualizar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grilla)).EndInit();
             this.ResumeLayout(false);

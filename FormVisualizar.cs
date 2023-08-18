@@ -21,6 +21,7 @@ namespace Tienda
         public FormVisualizar()
         {
             InitializeComponent();
+            listaCopia = null;
         }
         public FormVisualizar(List<Computador> lista)
         {
@@ -30,6 +31,10 @@ namespace Tienda
         private void FormVisualizar_Load(object sender, EventArgs e)
         {
             IniciarTabla();
+        }
+        private void FormVisualizar_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormPrincipal.GetInstancia().Show();
         }
         //evento para eliminar los datos de la tabla (lista)
         private void btnEliminarFila_Click(object sender, EventArgs e)
@@ -50,6 +55,10 @@ namespace Tienda
         private void btnEliminarFiltro_Click(object sender, EventArgs e)
         {
             //iniciar la tabla de nuevo
+            if(txtBuscarMarca.Text == string.Empty)
+            {
+                MessageBox.Show("Actualmente no hay ningun filtro.");
+            }
             txtBuscarMarca.Text = "";
             VisualizarListaPrincipal();
         }
